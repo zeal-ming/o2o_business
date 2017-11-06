@@ -867,9 +867,12 @@ class Request
             $array = [];
             foreach ($files as $key => $file) {
                 if (is_array($file['name'])) {
+
                     $item  = [];
                     $keys  = array_keys($file);
                     $count = count($file['name']);
+
+
                     for ($i = 0; $i < $count; $i++) {
                         if (empty($file['tmp_name'][$i]) || !is_file($file['tmp_name'][$i])) {
                             continue;

@@ -2,7 +2,6 @@
 
 namespace app\common\controller;
 
-
 use think\Controller;
 
 /**
@@ -16,6 +15,7 @@ abstract class NotifyHandler extends Controller
     {
         // 1.验签和参数校检
         $result = $this->checkSignAndOrder();
+
         if($result) {
             // 2.订单处理
             $this->orderHandle();
@@ -43,7 +43,8 @@ abstract class NotifyHandler extends Controller
 
     // 2.订单处理
     public function orderHandle()
-    {$_POST['trade_status'] = 'TRADE_SUCCESS';
+    {
+//        $_POST['trade_status'] = 'TRADE_SUCCESS';
         if($_POST['trade_status'] == 'TRADE_SUCCESS') {
             $orderStatus = $this->checkOrderStatus();
             if(!$orderStatus) {

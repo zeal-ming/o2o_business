@@ -1,6 +1,6 @@
 <?php
 
-namespace app\example\controller;
+namespace app\index\controller;
 
 use think\Db;
 use app\common\controller\NotifyHandler;
@@ -33,7 +33,7 @@ class Notify extends NotifyHandler
     {
         // 以下仅示例
         $out_trade_no = $_POST['out_trade_no'];
-        $order = Db::name('order')->where('out_trade_no', $out_trade_no)->find();
+        $order = Db::name('order')->where('trade_id', $out_trade_no)->find();
         $params = [
             'out_trade_no' => $order['out_trade_no'],
             'total_amount' => $order['total_amount'],

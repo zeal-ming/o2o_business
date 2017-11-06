@@ -1,10 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<div class="search">
+    <a href="{:url('index/index')}">
+        <img src="__STATIC__/index/image/logo.png" />
+    </a>
+    <div class="index-searchbar-wrap">
+        <form method="get" action="{:url('lists/search')}" class="form-search" onsubmit="return dosearch();">
+            <div class="index-searchbar">
+                <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span><input type="text" id="search-text" name="search-text" class="search-text ui-autocomplete-input" value="" placeholder="搜索商家或者商品名称" autocomplete="off" tabindex="1" maxlength="64">
+                <button style="position: absolute; right: 6%" class="btn btn-primary search-submit" id="search-button">搜索</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="nav-bar-header">
+    <div class="nav-inner">
+        <ul class="nav-list">
+            <li class="nav-item">
+                <span class="item">全部分类</span>
+                <div class="left-menu">
+                    {volist name="recs" id="vo"}
+                    <div class="level-item">
+                        <div class="first-level">
+                            <dl>
+                                <dt class="title"><a href="{:url('lists/index',['id'=>$key])}" target="_top">{$vo[0]}</a></dt>
+                                {volist name="vo[1]" id="se_vo" length="2"}
+                                <dd><a href="{:url('lists/index',['se_id'=>$se_vo.id])}" target="_top" class="">{$se_vo['name']}</a></dd>
+                                {/volist}
+                            </dl>
+                        </div>
+                        <div class="second-level">
+                            <div class="section">
+                                <div class="section-item clearfix no-top-border">
+                                    <h3>热门分类</h3>
+                                    <ul>
+                                        {volist name='$vo[1]' id='se_vo'}
+                                        <li><a href="{:url('lists/index',['se_id'=>$se_vo.id])}" target="_blank">{$se_vo['name']}</a></li>
+                                        {/volist}
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    {/volist}
+                </div>
+            </li>
+            <li class="nav-item"><a class="item first active">首页</a></li>
+            <li class="nav-item"><a class="item">团购</a></li>
+            <li class="nav-item"><a class="item">商户</a></li>
+        </ul>
+    </div>
+</div>

@@ -28,11 +28,9 @@ class Category extends Controller{
         //通过model获取分类数据
         $data = $this->obj->getFirstNormalCategories($parent_id);
 
-
         return $this->fetch('',[
             'categories' => $data
         ]);
-
 
     }
 
